@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  root 'training_sessions#index'
+  resources :training_sessions do
+    resources :training_session_activities, as: :activities, path: 'activities'
+  end
   resources :activities
   resources :activity_types
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

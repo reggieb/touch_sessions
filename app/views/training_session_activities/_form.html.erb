@@ -1,0 +1,42 @@
+<%= form_with(model: training_session_activity, local: true) do |form| %>
+  <% if training_session_activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(training_session_activity.errors.count, "error") %> prohibited this training_session_activity from being saved:</h2>
+
+      <ul>
+      <% training_session_activity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :activity_id %>
+    <%= form.collection_select :activity_id, Activity.all, :id, :name, prompt: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :good %>
+    <%= form.text_area :good, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bad %>
+    <%= form.text_area :bad, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :suggestion %>
+    <%= form.text_area :suggestion, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :summary %>
+    <%= form.text_area :summary, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

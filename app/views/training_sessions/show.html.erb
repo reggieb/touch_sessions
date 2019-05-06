@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Training Session</h1>
+<p>Held at <%= @training_session.start_at %></p>
+
+<p>
+  <%= @training_session.description %>
+</p>
+
+<h2>Activities</h2>
+
+<% if @training_session.training_session_activities.present? %>
+
+  <table class="table">
+    <tr>
+      <th>Activity<th>
+      <th>Summary</th>
+      <th><th>
+    <tr>
+    <% @training_session.training_session_activities.each do |training_session_activity| %>
+      <tr>
+        <td><%= training_session_activity.activity.name %></td>
+        <td><%= training_session_activity.summary %></td>
+        <td><%= link_to 'Show', training_session_activity_path(@training_session, training_session_activity) %>
+    <% end %>
+  </table>
+
+<% else %>
+<p>Please add an activity</p>
+<% end %>
+
+<p>
+  <%= link_to 'Add an activity', new_training_session_activity_path(@training_session), class: 'btn btn-primary' %>
+</p>
+
+<%= link_to 'Edit', edit_training_session_path(@training_session) %> |
+<%= link_to 'List', training_sessions_path %>

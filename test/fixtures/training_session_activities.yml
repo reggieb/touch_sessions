@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  training_session: one
+  activity: one
+  summary: MyText
+  good: MyText
+  bad: MyText
+  suggestion: MyText
+
+two:
+  training_session: two
+  activity: two
+  summary: MyText
+  good: MyText
+  bad: MyText
+  suggestion: MyText

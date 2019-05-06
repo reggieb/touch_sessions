@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Training session:</strong>
+  <%= @training_session_activity.training_session.start_at %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @training_session_activity.activity.name %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @training_session_activity.summary %>
+</p>
+
+<p>
+  <strong>Good:</strong>
+  <%= @training_session_activity.good %>
+</p>
+
+<p>
+  <strong>Bad:</strong>
+  <%= @training_session_activity.bad %>
+</p>
+
+<p>
+  <strong>Suggestion:</strong>
+  <%= @training_session_activity.suggestion %>
+</p>
+
+<%= link_to 'Edit', edit_training_session_activity_path(@training_session_activity) %> |
+<%= link_to 'Session summary', @training_session_activity.training_session %>

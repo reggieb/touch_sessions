@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Training Sessions</h1>
+
+<p>
+  <%= link_to 'New Training Session', new_training_session_path, class: 'btn btn-primary' %>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Start at</th>
+      <th>Description</th>
+      <th>Activities</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @training_sessions.each do |training_session| %>
+      <tr>
+        <td><%= training_session.start_at %></td>
+        <td><%= training_session.description %></td>
+        <td><%= training_session.activities.pluck(:name).to_sentence  %>
+        <td><%= link_to 'Show', training_session %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
