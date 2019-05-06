@@ -1,6 +1,12 @@
 <h1>Editing Training Session Activity</h1>
 
-<%= render 'form', training_session_activity: @training_session_activity %>
+<%= form_with(
+      model: @training_session_activity,
+      url: training_session_activity_path(@training_session, @training_session_activity),
+      local: true
+    ) do |form| %>
+  <%= render 'form', form: form, training_session_activity: @training_session_activity %>
+<% end %>
 
-<%= link_to 'Show', @training_session_activity %> |
-<%= link_to 'Back', training_session_activities_path %>
+<%= link_to 'Cancel', training_session_activity_path(@training_session, @training_session_activity) %> |
+<%= link_to 'Session', training_session_activities_path %>

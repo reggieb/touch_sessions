@@ -21,7 +21,7 @@
       <tr>
         <td><%= training_session.start_at %></td>
         <td><%= training_session.description %></td>
-        <td><%= training_session.activities.pluck(:name).to_sentence  %>
+        <td><%= training_session.activities.pluck(:name).uniq.to_sentence  %>
         <td><%= link_to 'Show', training_session %></td>
       </tr>
     <% end %>

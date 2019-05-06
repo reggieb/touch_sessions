@@ -1,5 +1,11 @@
 <h1>New Training Session Activity</h1>
 
-<%= render 'form', training_session_activity: @training_session_activity %>
+<%= form_with(
+      model: [@training_session, @training_session_activity],
+      url: training_session_activities_path(@training_session),
+      local: true
+      ) do |form| %>
+  <%= render 'form', training_session_activity: @training_session_activity, form: form %>
+<% end %>
 
 <%= link_to 'Back', training_session_activities_path %>

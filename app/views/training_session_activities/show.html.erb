@@ -30,5 +30,5 @@
   <%= @training_session_activity.suggestion %>
 </p>
 
-<%= link_to 'Edit', edit_training_session_activity_path(@training_session_activity) %> |
+<%= link_to 'Edit', edit_training_session_activity_path(@training_session_activity.training_session, @training_session_activity) %> |
 <%= link_to 'Session summary', @training_session_activity.training_session %>
