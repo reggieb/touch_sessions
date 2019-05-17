@@ -2,5 +2,13 @@
 
 <%= render 'form', training_session: @training_session %>
 
-<%= link_to 'Show', @training_session %> |
-<%= link_to 'Back', training_sessions_path %>
+<p class="buttons">
+  <%= link_to(
+          'Delete',
+          @training_session,
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          class: 'btn btn-danger'
+        ) %>
+  <%= link_to 'Cancel', @training_session, class: 'btn btn-secondary' %>
+</p>

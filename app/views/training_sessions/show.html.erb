@@ -1,11 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Training Session</h1>
-<p>Held at <%= @training_session.start_at %></p>
-
-<p>
-  <%= @training_session.description %>
-</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-6">Coaching Session</h1>
+    <h2 class="display-3"><%= @training_session.title %></h2>
+    <p class="lead"><%= @training_session.aims %></p>
+    <p>
+      <%= "Held at #{@training_session.venue}." if @training_session.venue? %>
+      <%= "Starting at #{@training_session.start_at}." if @training_session.start_at? %>
+    </p>
+  </div>
+</div>
 
 <h2>Activities</h2>
 
@@ -13,15 +16,28 @@
 
   <table class="table">
     <tr>
+      <th>Time</th>
+      <th>Aim</th>
       <th>Activity</th>
-      <th>Summary</th>
-      <th><th>
+      <th>Technical Points</th>
+      <th>Differentiation</th>
+      <th></th>
     <tr>
-    <% @training_session.training_session_activities.each do |training_session_activity| %>
+    <%
+      running_start ||= @training_session.start_at
+      @training_session.training_session_activities.each do |training_session_activity|
+    %>
       <tr>
+        <td>
+          <% duration = (training_session_activity.duration_minutes || 5) * 60 %>
+          <%= running_start.to_s(:time) %>&nbsp;<%= (running_start + duration).to_s(:time) %>
+          <% running_start += duration %>
+        </td>
+        <td><%= training_session_activity.aim %></td>
         <td><%= training_session_activity.activity.name %></td>
-        <td><%= training_session_activity.summary %></td>
-        <td><%= link_to 'Show', training_session_activity_path(@training_session, training_session_activity) %>
+        <td><%= training_session_activity.technical_points %></td>
+        <td><%= training_session_activity.differentiation %></td>
+        <td><%= link_to 'Edit', edit_training_session_activity_path(@training_session, training_session_activity) %>
     <% end %>
   </table>
 
@@ -34,4 +50,4 @@
 </p>
 
 <%= link_to 'Edit', edit_training_session_path(@training_session) %> |
-<%= link_to 'List', training_sessions_path %>
+<%= link_to 'Back to Session List', training_sessions_path %>

@@ -1,16 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Training Sessions</h1>
 
 <p>
   <%= link_to 'New Training Session', new_training_session_path, class: 'btn btn-primary' %>
 </p>
 
-<table class="table">
+<table class="table table-sm">
   <thead>
     <tr>
+      <th>Title</th>
+      <th>Venue</th>
       <th>Start at</th>
-      <th>Description</th>
+      <th>Aims</th>
       <th>Activities</th>
       <th></th>
     </tr>
@@ -19,8 +19,10 @@
   <tbody>
     <% @training_sessions.each do |training_session| %>
       <tr>
-        <td><%= training_session.start_at %></td>
-        <td><%= training_session.description %></td>
+        <td><%= training_session.title %></td>
+        <td><%= training_session.venue %></td>
+        <td class="datetime"><%= training_session.start_at %></td>
+        <td><%= training_session.aims %></td>
         <td><%= training_session.activities.pluck(:name).uniq.to_sentence  %>
         <td><%= link_to 'Show', training_session %></td>
       </tr>

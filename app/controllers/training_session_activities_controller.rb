@@ -1,15 +1,6 @@
 class TrainingSessionActivitiesController < ApplicationController
   before_action :training_session_activity, except: [:index, :new, :create]
 
-  # GET /training_session_activities
-  def index
-    @training_session_activities = TrainingSessionActivity.all
-  end
-
-  # GET /training_session_activities/1
-  def show
-  end
-
   # GET /training_session_activities/new
   def new
     training_session
@@ -25,7 +16,7 @@ class TrainingSessionActivitiesController < ApplicationController
     @training_session_activity = training_session.training_session_activities.build(training_session_activity_params)
 
     if @training_session_activity.save
-      redirect_to training_session_activity_path(training_session, @training_session_activity), notice: 'Training session activity was successfully created.'
+      redirect_to training_session, notice: 'Training session activity was successfully created.'
     else
       render :new
     end
@@ -34,7 +25,7 @@ class TrainingSessionActivitiesController < ApplicationController
   # PATCH/PUT /training_session_activities/1
   def update
     if @training_session_activity.update(training_session_activity_params)
-      redirect_to training_session_activity_path(training_session, training_session_activity), notice: 'Training session activity was successfully updated.'
+      redirect_to training_session, notice: 'Training session activity was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +34,7 @@ class TrainingSessionActivitiesController < ApplicationController
   # DELETE /training_session_activities/1
   def destroy
     @training_session_activity.destroy
-    redirect_to training_session_activities_url, notice: 'Training session activity was successfully destroyed.'
+    redirect_to training_session, notice: 'Training session activity was successfully destroyed.'
   end
 
   private
@@ -55,7 +46,7 @@ class TrainingSessionActivitiesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def training_session_activity_params
       params.require(:training_session_activity).permit(
-        :activity_id, :summary, :good, :bad, :suggestion
+        :activity_id, :aim, :description, :technical_points, :differentiation, :duration_minutes
       ).tap { |hash| hash[:training_session_id] = training_session.id }
     end
 

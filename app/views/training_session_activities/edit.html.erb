@@ -8,5 +8,14 @@
   <%= render 'form', form: form, training_session_activity: @training_session_activity %>
 <% end %>
 
-<%= link_to 'Cancel', training_session_activity_path(@training_session, @training_session_activity) %> |
-<%= link_to 'Session', training_session_activities_path %>
+<p class="buttons">
+  <%= link_to(
+        'Delete',
+        training_session_activity_path(@training_session, @training_session_activity),
+        method: :delete,
+        data: { confirm: 'Are you sure?' },
+        class: 'btn btn-danger'
+      ) %>
+
+  <%= link_to 'Cancel', @training_session, class: 'btn btn-secondary' %>
+</p>

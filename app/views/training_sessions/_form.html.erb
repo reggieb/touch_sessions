@@ -12,13 +12,23 @@
   <% end %>
 
   <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :start_at %>
     <%= form.datetime_select :start_at, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: 'form-control' %>
+    <%= form.label :venue %>
+    <%= form.text_field :venue, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :aims %>
+    <%= form.text_area :aims, class: 'form-control' %>
   </div>
 
   <div class="actions">
