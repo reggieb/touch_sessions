@@ -26,11 +26,11 @@
           </ul>
         </div>
       </nav>
-      <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      <div class="container-fluid">
         <div class="nav-spacer"></div>
         <%= content_tag(:div, notice, class: 'alert alert-primary', role: 'alert') if notice.present? %>
         <%= yield %>
-      </main>
+      </div>
     </div>
   </body>
 </html>

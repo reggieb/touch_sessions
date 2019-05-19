@@ -21,6 +21,7 @@
       <th>Activity</th>
       <th>Technical Points</th>
       <th>Differentiation</th>
+      <th>Comments</th>
       <th></th>
     <tr>
     <%
@@ -29,14 +30,17 @@
     %>
       <tr>
         <td>
-          <% duration = (training_session_activity.duration_minutes || 5) * 60 %>
-          <%= running_start.to_s(:time) %>&nbsp;<%= (running_start + duration).to_s(:time) %>
-          <% running_start += duration %>
+          <% unless training_session_activity.duration_minutes.zero? %>
+            <% duration = (training_session_activity.duration_minutes || 5) * 60 %>
+            <%= running_start.to_s(:time) %>&nbsp;<%= (running_start + duration).to_s(:time) %>
+            <% running_start += duration %>
+          <% end %>
         </td>
         <td><%= training_session_activity.aim %></td>
         <td><%= training_session_activity.activity.name %></td>
         <td><%= training_session_activity.technical_points %></td>
         <td><%= training_session_activity.differentiation %></td>
+        <td><%= training_session_activity.description %></td>
         <td><%= link_to 'Edit', edit_training_session_activity_path(@training_session, training_session_activity) %>
     <% end %>
   </table>
