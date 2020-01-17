@@ -17,7 +17,7 @@ class ActivityTypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create activity_type" do
     assert_difference('ActivityType.count') do
-      post activity_types_url, params: { activity_type: { name: @activity_type.name, tag: @activity_type.tag } }
+      post activity_types_url, params: { activity_type: { name: 'New', tag: 'new' } }
     end
 
     assert_redirected_to activity_type_url(ActivityType.last)

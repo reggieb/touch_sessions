@@ -1,48 +1,53 @@
 require 'test_helper'
 
 class TrainingSessionActivitiesControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @training_session_activity = training_session_activities(:one)
+  def training_session_activity
+    @training_session_activity ||= training_session_activities(:one)
   end
 
-  test "should get index" do
-    get training_session_activities_url
-    assert_response :success
+  def training_session
+    training_session_activity.training_session
   end
 
   test "should get new" do
-    get new_training_session_activity_url
+    get new_training_session_activity_url(training_session)
     assert_response :success
   end
 
   test "should create training_session_activity" do
     assert_difference('TrainingSessionActivity.count') do
-      post training_session_activities_url, params: { training_session_activity: { activity_id: @training_session_activity.activity_id, bad: @training_session_activity.bad, good: @training_session_activity.good, suggestion: @training_session_activity.suggestion, summary: @training_session_activity.summary, training_session_id: @training_session_activity.training_session_id } }
+      post training_session_activities_url(training_session, training_session_activity), params: params
     end
 
-    assert_redirected_to training_session_activity_url(TrainingSessionActivity.last)
-  end
-
-  test "should show training_session_activity" do
-    get training_session_activity_url(@training_session_activity)
-    assert_response :success
+    assert_redirected_to training_session_url(training_session)
   end
 
   test "should get edit" do
-    get edit_training_session_activity_url(@training_session_activity)
+    get edit_training_session_activity_url(training_session, training_session_activity)
     assert_response :success
   end
 
   test "should update training_session_activity" do
-    patch training_session_activity_url(@training_session_activity), params: { training_session_activity: { activity_id: @training_session_activity.activity_id, bad: @training_session_activity.bad, good: @training_session_activity.good, suggestion: @training_session_activity.suggestion, summary: @training_session_activity.summary, training_session_id: @training_session_activity.training_session_id } }
-    assert_redirected_to training_session_activity_url(@training_session_activity)
+    patch training_session_activity_url(training_session, training_session_activity), params: params
+    assert_redirected_to training_session_url(training_session)
   end
 
   test "should destroy training_session_activity" do
     assert_difference('TrainingSessionActivity.count', -1) do
-      delete training_session_activity_url(@training_session_activity)
+      delete training_session_activity_url(training_session, training_session_activity)
     end
 
-    assert_redirected_to training_session_activities_url
+    assert_redirected_to training_session_url(training_session)
+  end
+
+  def params
+    {
+      training_session_activity: {
+        activity_id: training_session_activity.activity_id,
+        aim: training_session_activity.aim,
+        description: training_session_activity.description,
+        training_session_id: training_session_activity.training_session_id
+      }
+    }
   end
 end

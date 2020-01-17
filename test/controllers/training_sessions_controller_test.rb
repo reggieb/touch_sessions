@@ -17,7 +17,7 @@ class TrainingSessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create training_session" do
     assert_difference('TrainingSession.count') do
-      post training_sessions_url, params: { training_session: { description: @training_session.description, start_at: @training_session.start_at } }
+      post training_sessions_url, params: params
     end
 
     assert_redirected_to training_session_url(TrainingSession.last)
@@ -34,7 +34,7 @@ class TrainingSessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update training_session" do
-    patch training_session_url(@training_session), params: { training_session: { description: @training_session.description, start_at: @training_session.start_at } }
+    patch training_session_url(@training_session), params: params
     assert_redirected_to training_session_url(@training_session)
   end
 
@@ -44,5 +44,9 @@ class TrainingSessionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to training_sessions_url
+  end
+
+  def params
+    { training_session: { aims: @training_session.aims, start_at: @training_session.start_at } }
   end
 end

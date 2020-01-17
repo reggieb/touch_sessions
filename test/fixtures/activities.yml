@@ -3,9 +3,9 @@
 one:
   name: MyString
   description: MyText
-  activity_type: one
+  activity_type_id: this-is-me
 
 two:
   name: MyString
   description: MyText
-  activity_type: two
+  activity_type_id: oh-dear

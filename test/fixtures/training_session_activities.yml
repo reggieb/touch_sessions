@@ -3,15 +3,13 @@
 one:
   training_session: one
   activity: one
-  summary: MyText
-  good: MyText
-  bad: MyText
-  suggestion: MyText
+  aim: Foo
+  description: Do foo
+  duration_minutes: 15
 
 two:
   training_session: two
   activity: two
-  summary: MyText
-  good: MyText
-  bad: MyText
-  suggestion: MyText
+  aim: Bar
+  description: Do bar
+  duration_minutes: 20

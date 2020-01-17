@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities
   def index
-    @activities = Activity.all
+    @activities = Activity.all.includes(:activity_type)
   end
 
   # GET /activities/1
@@ -26,6 +26,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to @activity, notice: 'Activity was successfully created.'
     else
+      @activity.errors
       render :new
     end
   end
